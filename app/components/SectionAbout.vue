@@ -22,7 +22,7 @@
       </div>
 
       <figure class="figure">
-        <img class="ph" src="/img/about.jpg" alt="ホテルの待合スペースでくつろぐ犬" width="1200" height="900" loading="lazy">
+        <img class="ph" :src="aboutImg" alt="ホテルの待合スペースでくつろぐ犬" width="1200" height="900" loading="lazy">
         <figcaption>お迎えとお引き渡しは、診療とは別の専用カウンターで。</figcaption>
       </figure>
 
@@ -38,4 +38,5 @@
 
 <script setup lang="ts">
 import { pillars, site } from '~/data/site'
+import aboutImg from '~/assets/img/about.jpg'
 </script>

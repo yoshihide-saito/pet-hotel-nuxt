@@ -207,10 +207,10 @@ img { max-width: 100%; display: block; }
   animation: heroFade calc(var(--slide) * 4) linear infinite;
   will-change: opacity, transform;
 }
-.hero__slide.s1 { background-image: url("/img/hero-1.jpg"); animation-delay: 0s; }
-.hero__slide.s2 { background-image: url("/img/hero-2.jpg"); animation-delay: var(--slide); }
-.hero__slide.s3 { background-image: url("/img/hero-3.jpg"); animation-delay: calc(var(--slide) * 2); }
-.hero__slide.s4 { background-image: url("/img/hero-4.jpg"); animation-delay: calc(var(--slide) * 3); }
+.hero__slide.s1 { background-image: url("../img/hero-1.jpg"); animation-delay: 0s; }
+.hero__slide.s2 { background-image: url("../img/hero-2.jpg"); animation-delay: var(--slide); }
+.hero__slide.s3 { background-image: url("../img/hero-3.jpg"); animation-delay: calc(var(--slide) * 2); }
+.hero__slide.s4 { background-image: url("../img/hero-4.jpg"); animation-delay: calc(var(--slide) * 3); }
 
 @keyframes heroFade {
   0%   { opacity: 0; transform: scale(1.00); }
@@ -278,9 +278,9 @@ img { max-width: 100%; display: block; }
   scroll-margin-top: 60px;
 }
 .band__bg { position: absolute; inset: 0; background-size: cover; background-position: center; filter: saturate(16%) contrast(1.05) brightness(.9); }
-.band--dog .band__bg  { background-image: url("/img/dog-play.jpg"); background-position: center 42%; }
-.band--cat .band__bg  { background-image: url("/img/cat-play.jpg"); }
-.band--flow .band__bg { background-image: url("/img/flow.jpg"); background-position: center 30%; }
+.band--dog .band__bg  { background-image: url("../img/dog-play.jpg"); background-position: center 42%; }
+.band--cat .band__bg  { background-image: url("../img/cat-play.jpg"); }
+.band--flow .band__bg { background-image: url("../img/flow.jpg"); background-position: center 30%; }
 .band__scrim { position: absolute; inset: 0; background: rgba(24,23,21,.5); }
 .band__in { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .band .sec__no { color: rgba(255,255,255,.72); }

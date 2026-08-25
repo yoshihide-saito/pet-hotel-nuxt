@@ -2,8 +2,8 @@
 
 1ページ（スクロール型）のペットホテルサイト。Nuxt 4 / Vue 3。
 
-デザインの元データ（アートボード・デザインシステム）は
-`../pet-hotel-design/` にあります。
+デザインの元データ（デスクトップ／モバイルのアートボード、デザインシステム）:
+https://claude.ai/code/artifact/e3a6089f-2ffc-4a79-a011-c3c8e8fb1365
 
 ## 使い方
 
@@ -17,6 +17,30 @@ npm run generate   # 静的書き出し → .output/public/
 > `.npmrc` で `legacy-peer-deps=true` を設定しています。
 > 手元の npm 10.9.2 が Nuxt 4 の peer 解決でクラッシュするための回避策です。
 > npm を新しくしたら削除して構いません。
+
+## デプロイ（GitHub Pages）
+
+`master` に push すると `.github/workflows/deploy.yml` が走り、
+静的書き出し（`npm run generate`）の結果を GitHub Pages へ公開します。
+
+公開URL: https://yoshihide-saito.github.io/pet-hotel-nuxt/
+
+> **初回だけリポジトリ設定が必要です。**
+> Settings → Pages → Build and deployment → Source を
+> **「GitHub Actions」** に変更してください。
+> 「Deploy from a branch」のままだとJekyllがリポジトリ直下を配信し、READMEが表示されます。
+
+プロジェクトページは `/<リポジトリ名>/` 配下で配信されるため、
+ワークフロー内で `NUXT_APP_BASE_URL=/pet-hotel-nuxt/` を渡しています。
+ローカルでは指定しないので `/` のままです。
+
+リポジトリ名を変えたときは、次の2箇所を合わせて直してください。
+
+- `.github/workflows/deploy.yml` の `NUXT_APP_BASE_URL`
+- `nuxt.config.ts` の `siteUrl`（OGP画像の絶対URLに使用）
+
+独自ドメインやサブドメイン直下（`https://example.com/`）に置く場合は、
+`NUXT_APP_BASE_URL` の行ごと削除すれば `/` で書き出されます。
 
 ## 構成
 
@@ -37,7 +61,10 @@ app/
     site.ts               店舗情報・ナビ・3つの強み・ご利用の流れ
     pets.ts               犬猫の個室仕様・1日の流れ・料金・持ち物
     faq.ts                よくあるご質問
-public/img/               写真10点
+assets/img/             写真10点（Vite が処理してハッシュ付きで出力）
+public/
+  og.jpg                  OGP用（絶対URLで参照するため public に置く）
+  .nojekyll               GitHub Pages で _nuxt/ が無視されないように
 ```
 
 **文言と数字はほぼすべて `app/data/` に集めてあります。**
@@ -47,7 +74,7 @@ Vueを触らずに内容を差し替えられます。
 
 - `app/data/site.ts` … 病院名・電話番号・住所・メール・営業時間（すべて仮の値）
 - `app/data/pets.ts` … 料金、個室の寸法、1日のスケジュール、持ち物リスト（すべて想定）
-- `public/img/*.jpg` … Wikimedia Commons の自由利用素材（CC0 / CC BY / CC BY-SA）。
+- `app/assets/img/*.jpg` … Wikimedia Commons の自由利用素材（CC0 / CC BY / CC BY-SA）。
   CC BY-SA を含むため、公開時は自院で撮影した写真への差し替えを推奨します。
 - 「Webフォームで予約する」ボタンの遷移先（現在は `#flow` のまま）
 
@@ -64,3 +91,6 @@ Vueを触らずに内容を差し替えられます。
   vue-router を経由しないので、ブラウザ標準のスムーススクロールがそのまま効きます。
   ヘッダー分のオフセットは `scroll-margin-top` で吸収しています。
 - `prefers-reduced-motion` 指定時は背景の切り替えを止めて1枚目を固定表示します。
+- **画像は `public/` ではなく `app/assets/img/` に置いています。**
+  `public/` だと `/img/...` という絶対パスになり、GitHub Pages のサブパス配信で404になるためです。
+  `assets/` なら Vite がベースパスを付けて書き出します。追加する画像も `app/assets/img/` へ。

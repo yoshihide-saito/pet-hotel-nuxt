@@ -1,3 +1,6 @@
+import dogRoomImg from "../assets/img/dog-room.jpg"
+import catRoomImg from "../assets/img/cat-room.jpg"
+
 export interface ScheduleItem { time: string; title: string; desc: string }
 export interface Spec { label: string; value: string }
 export interface PriceRow { label: string; amount: string; unit?: string }
@@ -46,7 +49,7 @@ export const dog: Pet = {
   tint: false,
   room: {
     title: '犬舎はすべて個室です',
-    img: '/img/dog-room.jpg',
+    img: dogRoomImg,
     alt: '個室でくつろぐビーグル',
     paragraphs: [
       'ステンレス製の相部屋ではなく、木調パネルで仕切った1頭ずつの個室です。床は滑りにくいクッションフロア、天井にはやわらかい間接照明。前後左右が見えないので、となりの子の気配で落ち着かない、ということがありません。',
@@ -137,7 +140,7 @@ export const cat: Pet = {
   tint: true,
   room: {
     title: '猫舎は専用フロアの個室です',
-    img: '/img/cat-room.jpg',
+    img: catRoomImg,
     alt: 'やわらかい寝床で眠る猫',
     paragraphs: [
       '犬舎とは階を分け、空調も換気も独立させています。廊下の動線も別なので、滞在中に犬とすれ違うことはありません。',

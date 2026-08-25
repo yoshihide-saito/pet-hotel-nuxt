@@ -1,4 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
+// GitHub Pages のプロジェクトページは /<リポジトリ名>/ 配下で配信されるため、
+// デプロイ時だけ NUXT_APP_BASE_URL を渡してベースパスを切り替える。
+// ローカル（npm run dev / npm run generate）では '/' のまま。
+const baseURL = process.env.NUXT_APP_BASE_URL || '/'
+
+// OGP画像は絶対URLでないと外部サービスが読めないので、公開URLを明示する。
+const siteUrl = 'https://yoshihide-saito.github.io/pet-hotel-nuxt/'
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-01-01',
   devtools: { enabled: false },
@@ -6,6 +15,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/site.css'],
 
   app: {
+    baseURL,
     head: {
       htmlAttrs: { lang: 'ja' },
       title: 'XXX動物病院 ペットホテル｜動物病院の中にある、ちいさなホテル。',
@@ -19,12 +29,14 @@ export default defineNuxtConfig({
         },
         { name: 'theme-color', content: '#faf9f7' },
         { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: siteUrl },
         { property: 'og:title', content: 'XXX動物病院 ペットホテル' },
         {
           property: 'og:description',
           content: '動物病院の中にある、ちいさなホテル。獣医師とスタッフが見守る、完全個室のお預かり。'
         },
-        { property: 'og:image', content: '/img/hero-1.jpg' }
+        { property: 'og:image', content: siteUrl + 'og.jpg' },
+        { name: 'twitter:card', content: 'summary_large_image' }
       ],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
