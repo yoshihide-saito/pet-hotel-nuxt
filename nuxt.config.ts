@@ -18,19 +18,20 @@ export default defineNuxtConfig({
     baseURL,
     head: {
       htmlAttrs: { lang: 'ja' },
-      title: 'XXX動物病院 ペットホテル｜動物病院の中にある、ちいさなホテル。',
+      title: 'XXX動物病院 ペットホテル（架空のデモサイト）｜動物病院の中にある、ちいさなホテル。',
       meta: [
         { charset: 'utf-8' },
+        { name: 'robots', content: 'noindex, nofollow' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           name: 'description',
           content:
-            'XXX動物病院が運営するペットホテル。獣医師とスタッフが見守る完全個室で、犬と猫をお預かりします。持病やお薬のある子、シニアや子犬・子猫もご相談ください。'
+            '【架空のデモサイト】XXX動物病院が運営するペットホテル。獣医師とスタッフが見守る完全個室で、犬と猫をお預かりします。持病やお薬のある子、シニアや子犬・子猫もご相談ください。'
         },
         { name: 'theme-color', content: '#faf9f7' },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: siteUrl },
-        { property: 'og:title', content: 'XXX動物病院 ペットホテル' },
+        { property: 'og:title', content: 'XXX動物病院 ペットホテル（架空のデモサイト）' },
         {
           property: 'og:description',
           content: '動物病院の中にある、ちいさなホテル。獣医師とスタッフが見守る、完全個室のお預かり。'

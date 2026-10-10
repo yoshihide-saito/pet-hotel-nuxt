@@ -12,6 +12,7 @@
     </main>
 
     <SiteFooter />
+    <DemoNotice />
   </div>
 </template>
 
