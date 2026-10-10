@@ -26,4 +26,9 @@
 body {
   padding-bottom: 56px;
 }
+@media (max-width: 600px) {
+  body {
+    padding-bottom: 96px;
+  }
+}
 </style>
